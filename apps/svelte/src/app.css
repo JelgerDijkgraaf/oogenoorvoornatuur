@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+:root {
+    --color-primary: #3B5E46;
+    --color-primary-2: #458057;
+    --color-secondary: #D8C7A3;
+    --color-secondary-2: #F9E7C2;
+    --color-text: #333333;
+    --color-text-light: #F8F8F8;
+    --color-muted-text-light: #666666;
+    --color-background: #FAFAF7;
+    --color-border: #E0E0E0;
+    --color-error: #D35C4A;
+    --color-success: #5C9C7A;
+
+    --radius-radius: 8;
+
+    --width-desktop-full: 1300px;
+    --width-desktop-container: 1024px;
+}
+
+.bg-primary {
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-2));
+}
