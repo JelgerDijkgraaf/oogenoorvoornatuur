@@ -1,0 +1,17 @@
+{
+  "name": "oogenoorvoornatuur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:sveltekit": "pnpm --filter sveltekit dev",
+    "dev:payload": "pnpm --filter payload dev",
+    "dev": "concurrently \"pnpm dev:sveltekit\" \"pnpm dev:payload\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
