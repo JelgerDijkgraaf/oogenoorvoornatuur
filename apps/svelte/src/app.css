@@ -13,12 +13,30 @@
     --color-error: #D35C4A;
     --color-success: #5C9C7A;
 
-    --radius-radius: 8;
+    --radius-radius: 8px;
+
+    --shadow-shadow: 0 0 6px 1px rgb(0,0,0, .25);
 
     --width-desktop-full: 1300px;
     --width-desktop-container: 1024px;
 }
 
+* {
+    font-family: jost, serif;
+}
+
 .bg-primary {
     background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-2));
+}
+
+.container {
+    @apply w-[var(--width-desktop-container)] mx-auto
+}
+
+.nav-link {
+    @apply text-white font-[500] text-sm
+}
+
+.title {
+    @apply font-bold text-[var(--color-primary)]
 }

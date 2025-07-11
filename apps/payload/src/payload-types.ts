@@ -84,8 +84,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'home-texts': HomeText;
+  };
+  globalsSelect: {
+    'home-texts': HomeTextsSelect<false> | HomeTextsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -284,6 +288,46 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-texts".
+ */
+export interface HomeText {
+  id: number;
+  hero?: {
+    title?: string | null;
+    subtitle?: string | null;
+    button?: string | null;
+  };
+  intro?: {
+    introTitle?: string | null;
+    introBody?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-texts_select".
+ */
+export interface HomeTextsSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        button?: T;
+      };
+  intro?:
+    | T
+    | {
+        introTitle?: T;
+        introBody?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

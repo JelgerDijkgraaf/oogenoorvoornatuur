@@ -8,7 +8,8 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"generate:openapi": "openapi-typescript ../cms/openapi.yaml -o ./src/lib/api/types.generated.ts"
 	},
 	"files": [
 		"dist",
@@ -32,9 +33,11 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-cloudflare-workers": "^2.7.0",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"openapi-typescript": "^7.6.1",
 		"publint": "^0.3.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -45,6 +48,8 @@
 		"svelte"
 	],
 	"dependencies": {
-		"tailwindcss": "^4.1.11"
+		"@tailwindcss/vite": "^4.1.11",
+		"tailwindcss": "^4.1.11",
+		"openapi-fetch": "^0.13.4"
 	}
 }
