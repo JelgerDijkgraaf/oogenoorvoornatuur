@@ -19,6 +19,8 @@
 
     --width-desktop-full: 1300px;
     --width-desktop-container: 1024px;
+    --width-tablet-container: 700px;
+    --width-phone-container: 300px;
 }
 
 * {
@@ -34,7 +36,7 @@ main {
 }
 
 .container {
-    @apply w-[var(--width-desktop-container)] mx-auto
+    @apply w-[var(--width-phone-container)] sm:w-[var(--width-tablet-container)] md:w-[var(--width-desktop-container)] mx-auto
 }
 
 .nav-link {
@@ -46,6 +48,14 @@ main {
 }
 
 .fade-mask {
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0)), linear-gradient(to left, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
-    mask-composite: intersect;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+}
+
+@media (min-width: 768px) {
+    .fade-mask {
+        mask-image:
+                linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0)),
+                linear-gradient(to left, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+        mask-composite: intersect;
+    }
 }

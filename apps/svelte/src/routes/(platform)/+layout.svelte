@@ -16,23 +16,23 @@
         </div>
     </div>
     {@render children()}
-    <div class="h-60 w-full bg-primary text-[var(--color-text-light)] text-sm relative">
-        <div class="container flex justify-evenly p-5">
-            <div class="w-1/3 flex flex-col">
-                <h3 class="text-2xl font-bold mb-1">Links</h3>
+    <div class="h-auto w-full bg-primary text-[var(--color-text-light)] text-sm relative">
+        <div class="md:container mx-auto flex gap-y-5 justify-evenly p-5 pb-12 md:pb-16 flex-col md:flex-row">
+            <div class="w-full md:w-fit flex flex-col">
+                <h3 class="text-xl md:text-2xl font-bold mb-1">Links</h3>
                 <a href="/">Homepagina</a>
                 <a href="/excursies">Excursies</a>
                 <a href="/regels">Regels</a>
                 <a href="/over-mij">Over Mij</a>
             </div>
-            <div class="w-1/3 flex flex-col">
-                <h3 class="text-2xl font-bold mb-1">Contact & Gegevens</h3>
+            <div class="w-full md:w-fit flex flex-col">
+                <h3 class="text-xl md:text-2xl font-bold mb-1">Contact & Gegevens</h3>
                 <p>E-mail: {texts.footer.email}</p>
                 <p>KVK: {texts.footer.coc}</p>
                 <p>BTW nr: {texts.footer.vat} </p>
             </div>
-            <div class="w-1/3 flex flex-col">
-                <h3 class="text-2xl font-bold mb-1">Social Media</h3>
+            <div class="w-full md:w-fit flex flex-col">
+                <h3 class="text-xl md:text-2xl font-bold mb-1">Social Media</h3>
                 <a href="https://www.instagram.com/oogenoorvoornatuur/" target="_blank"
                    class="flex items-center gap-x-2">
                     <img src="/assets/icons/insta.svg" alt="instagram icon" class="h-6">
@@ -45,7 +45,7 @@
                 </a>
             </div>
         </div>
-        <div class="bottom-0 h-8 w-full mx-auto absolute">
+        <div class="bottom-0 h-10 px-5 w-full absolute">
             <p class="mx-auto w-fit">
                 © {year} Oogenoorvoornatuur | Ontwikkeld door Jelger Dijkgraaf
             </p>
