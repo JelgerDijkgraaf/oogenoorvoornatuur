@@ -3,6 +3,9 @@ import { GlobalConfig } from 'payload/types';
 export const Home: GlobalConfig = {
     slug: 'home-texts',
     label: 'Home Texts',
+    access: {
+        read: () => true,
+    },
     fields: [
         {
             type: 'group',
@@ -17,10 +20,11 @@ export const Home: GlobalConfig = {
         {
             type: 'group',
             name: 'intro',
-            label: 'Intro Section',
+            label: 'Intro Sectie',
             fields: [
-                { name: 'introTitle', type: 'text' },
-                { name: 'introBody', type: 'textarea' },
+                { name: 'title', type: 'text', label: 'Titel' },
+                { name: 'body', type: 'textarea', label: 'Tekst' },
+                { name: 'button', type: 'text', label: 'Call-to-action Knop'},
             ],
         },
     ],

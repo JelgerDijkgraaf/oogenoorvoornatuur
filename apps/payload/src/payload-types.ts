@@ -86,9 +86,11 @@ export interface Config {
   };
   globals: {
     'home-texts': HomeText;
+    'footer-texts': FooterText;
   };
   globalsSelect: {
     'home-texts': HomeTextsSelect<false> | HomeTextsSelect<true>;
+    'footer-texts': FooterTextsSelect<false> | FooterTextsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -301,8 +303,23 @@ export interface HomeText {
     button?: string | null;
   };
   intro?: {
-    introTitle?: string | null;
-    introBody?: string | null;
+    title?: string | null;
+    body?: string | null;
+    button?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-texts".
+ */
+export interface FooterText {
+  id: number;
+  footer?: {
+    email?: string | null;
+    coc?: string | null;
+    vat?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -322,8 +339,25 @@ export interface HomeTextsSelect<T extends boolean = true> {
   intro?:
     | T
     | {
-        introTitle?: T;
-        introBody?: T;
+        title?: T;
+        body?: T;
+        button?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-texts_select".
+ */
+export interface FooterTextsSelect<T extends boolean = true> {
+  footer?:
+    | T
+    | {
+        email?: T;
+        coc?: T;
+        vat?: T;
       };
   updatedAt?: T;
   createdAt?: T;

@@ -1,5 +1,8 @@
 <script>
-    let { children } = $props();
+    let {children, data} = $props();
+
+    const texts = data.texts;
+    const year = new Date().getFullYear()
 </script>
 <div>
     <div class="h-[50px] w-full absolute top-0 left-0 z-999 bg-primary">
@@ -13,4 +16,39 @@
         </div>
     </div>
     {@render children()}
+    <div class="h-60 w-full bg-primary text-[var(--color-text-light)] text-sm relative">
+        <div class="container flex justify-evenly p-5">
+            <div class="w-1/3 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1">Links</h3>
+                <a href="/">Homepagina</a>
+                <a href="/excursies">Excursies</a>
+                <a href="/regels">Regels</a>
+                <a href="/over-mij">Over Mij</a>
+            </div>
+            <div class="w-1/3 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1">Contact & Gegevens</h3>
+                <p>E-mail: {texts.footer.email}</p>
+                <p>KVK: {texts.footer.coc}</p>
+                <p>BTW nr: {texts.footer.vat} </p>
+            </div>
+            <div class="w-1/3 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1">Social Media</h3>
+                <a href="https://www.instagram.com/oogenoorvoornatuur/" target="_blank"
+                   class="flex items-center gap-x-2">
+                    <img src="/assets/icons/insta.svg" alt="instagram icon" class="h-6">
+                    <p>@oogenoorvoornatuur</p>
+                </a>
+                <a href="https://www.facebook.com/oogenoorvoornatuur/" target="_blank"
+                   class="flex items-center gap-x-2">
+                    <img src="/assets/icons/facebook.svg" alt="facebook icon" class="h-6">
+                    <p>@oogenoorvoornatuur</p>
+                </a>
+            </div>
+        </div>
+        <div class="bottom-0 h-8 w-full mx-auto absolute">
+            <p class="mx-auto w-fit">
+                © {year} Oogenoorvoornatuur | Ontwikkeld door Jelger Dijkgraaf
+            </p>
+        </div>
+    </div>
 </div>
