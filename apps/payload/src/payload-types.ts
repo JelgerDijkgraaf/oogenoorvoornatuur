@@ -87,10 +87,12 @@ export interface Config {
   globals: {
     'home-texts': HomeText;
     'footer-texts': FooterText;
+    'about-texts': AboutText;
   };
   globalsSelect: {
     'home-texts': HomeTextsSelect<false> | HomeTextsSelect<true>;
     'footer-texts': FooterTextsSelect<false> | FooterTextsSelect<true>;
+    'about-texts': AboutTextsSelect<false> | AboutTextsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -326,6 +328,19 @@ export interface FooterText {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-texts".
+ */
+export interface AboutText {
+  id: number;
+  about?: {
+    title?: string | null;
+    body?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-texts_select".
  */
 export interface HomeTextsSelect<T extends boolean = true> {
@@ -358,6 +373,21 @@ export interface FooterTextsSelect<T extends boolean = true> {
         email?: T;
         coc?: T;
         vat?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-texts_select".
+ */
+export interface AboutTextsSelect<T extends boolean = true> {
+  about?:
+    | T
+    | {
+        title?: T;
+        body?: T;
       };
   updatedAt?: T;
   createdAt?: T;
