@@ -88,11 +88,13 @@ export interface Config {
     'home-texts': HomeText;
     'footer-texts': FooterText;
     'about-texts': AboutText;
+    'rules-texts': RulesText;
   };
   globalsSelect: {
     'home-texts': HomeTextsSelect<false> | HomeTextsSelect<true>;
     'footer-texts': FooterTextsSelect<false> | FooterTextsSelect<true>;
     'about-texts': AboutTextsSelect<false> | AboutTextsSelect<true>;
+    'rules-texts': RulesTextsSelect<false> | RulesTextsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -341,6 +343,25 @@ export interface AboutText {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rules-texts".
+ */
+export interface RulesText {
+  id: number;
+  rules?: {
+    title?: string | null;
+    body?: string | null;
+    rules?:
+      | {
+          rule?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-texts_select".
  */
 export interface HomeTextsSelect<T extends boolean = true> {
@@ -388,6 +409,27 @@ export interface AboutTextsSelect<T extends boolean = true> {
     | {
         title?: T;
         body?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rules-texts_select".
+ */
+export interface RulesTextsSelect<T extends boolean = true> {
+  rules?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        rules?:
+          | T
+          | {
+              rule?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

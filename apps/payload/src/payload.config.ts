@@ -13,6 +13,7 @@ import { Media } from './collections/Media'
 import { Home } from './globals/home'
 import { Footer } from './globals/footer'
 import { About } from './globals/about'
+import { Rules } from './globals/rules'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +26,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media],
-  globals: [Home, Footer, About],
+  globals: [Home, Footer, About, Rules],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
