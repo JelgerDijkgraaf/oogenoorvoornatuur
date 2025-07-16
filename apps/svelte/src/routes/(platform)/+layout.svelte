@@ -7,7 +7,9 @@
 <div>
     <div class="h-[50px] w-full absolute top-0 left-0 z-999 bg-primary">
         <div class="container w-full h-full flex justify-between">
-            <div>logo</div>
+            <a href="/" class="h-full flex items-center">
+                <img src="/assets/images/Logo.png" alt="logo" class="max-h-3/4 fill-white brightness-1000">
+            </a>
             <div class="flex items-center gap-x-5">
                 <a href="/excursies" class="nav-link">Excursies</a>
                 <a href="/regels" class="nav-link">Regels</a>
