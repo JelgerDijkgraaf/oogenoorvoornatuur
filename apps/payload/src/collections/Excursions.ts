@@ -77,9 +77,10 @@ export const Excursions: CollectionConfig = {
 
         },
         {
-            name: 'category',
+            name: 'categories',
             type: 'relationship',
             relationTo: 'categories',
+            hasMany: true,
         },
         {
             name: 'dates',

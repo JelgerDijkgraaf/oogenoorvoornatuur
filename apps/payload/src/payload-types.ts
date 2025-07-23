@@ -201,7 +201,7 @@ export interface Excursion {
   };
   minGuests?: number | null;
   maxGuests?: number | null;
-  category?: (number | null) | Category;
+  categories?: (number | Category)[] | null;
   dates?:
     | {
         startDate?: string | null;
@@ -345,7 +345,7 @@ export interface ExcursionsSelect<T extends boolean = true> {
       };
   minGuests?: T;
   maxGuests?: T;
-  category?: T;
+  categories?: T;
   dates?:
     | T
     | {
