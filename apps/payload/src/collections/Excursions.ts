@@ -1,7 +1,7 @@
 import type {CollectionConfig} from 'payload'
 
 export const Excursions: CollectionConfig = {
-    slug: 'Excursies',
+    slug: 'excursions',
     access: {
         read: () => true,
     },

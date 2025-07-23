@@ -69,7 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    Excursies: Excursy;
+    excursions: Excursion;
     categories: Category;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -79,7 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    Excursies: ExcursiesSelect<false> | ExcursiesSelect<true>;
+    excursions: ExcursionsSelect<false> | ExcursionsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -172,9 +172,9 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Excursies".
+ * via the `definition` "excursions".
  */
-export interface Excursy {
+export interface Excursion {
   id: number;
   title: string;
   description: {
@@ -238,8 +238,8 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'Excursies';
-        value: number | Excursy;
+        relationTo: 'excursions';
+        value: number | Excursion;
       } | null)
     | ({
         relationTo: 'categories';
@@ -329,9 +329,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Excursies_select".
+ * via the `definition` "excursions_select".
  */
-export interface ExcursiesSelect<T extends boolean = true> {
+export interface ExcursionsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   image?: T;

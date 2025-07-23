@@ -36,6 +36,11 @@ main {
     background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-2));
 }
 
+.bg-secondary {
+    background: linear-gradient(to bottom, var(--color-secondary), var(--color-secondary-2));
+    opacity: 50%;
+}
+
 .container {
     @apply w-[var(--width-phone-container)] sm:w-[var(--width-tablet-container)] md:w-[var(--width-desktop-container)] mx-auto
 }
