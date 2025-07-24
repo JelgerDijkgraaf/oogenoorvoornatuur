@@ -7,7 +7,9 @@ export const load: PageServerLoad = async ({ fetch }) => {
             client.GET('/api/excursions', {
                 fetch,
                 params: {
-                    query: { limit: 99999 }
+                    query: {
+                        limit: 99999,
+                    }
                 }
             }),
             client.GET('/api/categories', {
