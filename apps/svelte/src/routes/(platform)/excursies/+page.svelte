@@ -2,20 +2,17 @@
     import ExcursionCard from "./ExcursionCard.svelte";
     import {page} from '$app/stores';
     import {goto} from '$app/navigation';
-    import {derived} from 'svelte/store';
 
     let {data} = $props();
     const excursions = data.excursions.docs;
     const categories = data.categories.docs;
 
-    // Get selected categories from URL
     let selectedCategories = $state([]);
 
     $effect(() => {
         const urlParams = new URLSearchParams($page.url.search);
-        const fromUrl = urlParams.getAll('categories');
-        selectedCategories = fromUrl;
-    })
+        selectedCategories = urlParams.getAll('categories');
+    });
 
     function toggleCategory(catName) {
         const isSelected = selectedCategories.includes(catName);
@@ -29,6 +26,7 @@
         goto(`?${params.toString()}`, {replaceState: true});
     }
 
+    // Flattened and filtered excursions
     let processedExcursions = $derived(
         excursions
             .flatMap(excursion =>
@@ -36,13 +34,33 @@
             )
             .filter(e =>
                 selectedCategories.length === 0 ||
-                (Array.isArray(e.categories) && e.categories.some(c => selectedCategories.includes(c.name)))
+                (Array.isArray(e.categories) &&
+                    e.categories.some(c => selectedCategories.includes(c.name)))
             )
-    )
+    );
+
+    // Infinite loading
+    let visibleCount = $state(4);
+    let paginatedExcursions = $derived(processedExcursions.slice(0, visibleCount));
+
+    let sentinel;
+
+    $effect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting && visibleCount < processedExcursions.length) {
+                visibleCount += 8;
+            }
+        });
+
+        if (sentinel) observer.observe(sentinel);
+
+        return () => observer.disconnect();
+    });
 </script>
 
-<main class="min-h-screen pt-20">
+<main class="min-h-screen pt-20 pb-10">
     <div class="container min-h-screen flex gap-x-5">
+        <!-- Sidebar -->
         <div class="bg-secondary w-1/3 p-5 rounded-[var(--radius-radius)] shadow-[var(--shadow-shadow)]">
             <h4 class="title text-3xl mb-1">Categorie</h4>
             <div class="flex flex-col text-[var(--color-text)] text-base space-y-2">
@@ -62,11 +80,13 @@
             </div>
         </div>
 
-        <div class="flex gap-10 w-2/3">
+        <!-- Excursion list -->
+        <div class="flex flex-col w-2/3">
             <div class="space-y-4">
-                {#each processedExcursions as e}
+                {#each paginatedExcursions as e}
                     <ExcursionCard {e}/>
                 {/each}
+                <div bind:this={sentinel} class="h-10"></div>
             </div>
         </div>
     </div>
